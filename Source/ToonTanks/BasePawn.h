@@ -15,15 +15,23 @@ public:
 	// Sets default values for this pawn's properties
 	ABasePawn();
 
+	UPROPERTY(VisibleAnywhere)
+	int32 VisibleAnywhereInt = 24;
+	UPROPERTY( EditAnywhere )
+	int32 EditAnywhereInt = 32;
+	UPROPERTY( VisibleInstanceOnly )
+	int32 visibleInstanceOnlyInt = 66;
+	UPROPERTY(EditAnywhere )
+	float Speed = 400.f;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 private:
-	UPROPERTY( )
+	UPROPERTY(  )
 	class UCapsuleComponent* CapsuleComp;
 
-	UPROPERTY( )
+	UPROPERTY(  )
 	UStaticMeshComponent* BaseMesh;
 
 	UPROPERTY( )

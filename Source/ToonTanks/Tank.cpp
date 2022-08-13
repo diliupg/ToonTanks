@@ -7,7 +7,8 @@
 #include "Kismet/GameplayStatics.h"
 
 ATank::ATank( ) :
-	Speed(200.f )
+	Speed(200.f ),
+	TurnRate(50.f )
 {
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>( TEXT( "Spring Arm" ) );
 	SpringArm->SetupAttachment( RootComponent );
@@ -20,6 +21,7 @@ void ATank::SetupPlayerInputComponent( class UInputComponent* PlayerInputCompone
 {
 	Super::SetupPlayerInputComponent( PlayerInputComponent );
 	PlayerInputComponent->BindAxis( TEXT( "MoveForward" ), this, &ATank::Move );
+	PlayerInputComponent->BindAxis( TEXT( "Turn" ), this, &ATank::Turn );
 }
 
 void ATank::Move( float Value )
@@ -27,7 +29,15 @@ void ATank::Move( float Value )
 	//UE_LOG( LogTemp, Warning, TEXT( "Value: %f" ), Value );
 
 	FVector DeltaLocation = FVector::ZeroVector;
-	// x == value * DeltaTime * Speed
+	// x = value * DeltaTime * Speed
 	DeltaLocation.X = Value * Speed * UGameplayStatics::GetWorldDeltaSeconds( this );
-	AddActorLocalOffset( DeltaLocation );
+	AddActorLocalOffset( DeltaLocation, true );
+}
+
+void ATank::Turn( float Value )
+{
+	FRotator DeltaRotation = FRotator::ZeroRotator;
+	// Yaw = Value * DeltaTime * TurnRate 
+	DeltaRotation.Yaw = Value * TurnRate * UGameplayStatics::GetWorldDeltaSeconds( this );
+	AddActorLocalRotation( DeltaRotation, true );
 }

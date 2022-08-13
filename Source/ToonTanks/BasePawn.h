@@ -16,7 +16,7 @@ public:
 	ABasePawn();
 
 	
-	UPROPERTY( VisibleInstanceOnly )
+	/*UPROPERTY( VisibleInstanceOnly )
 	int32 visibleInstanceOnlyInt = 66;
 	UPROPERTY(VisibleDefaultsOnly )
 	float VisibleDefaultsOnlyInt = 666.f;
@@ -24,6 +24,7 @@ public:
 	float EditDefaultsOnlyInt = 555.f;
 	UPROPERTY( EditInstanceOnly )
 	float EditInstanceOnlyInt = 444.f;
+	*/
 	UPROPERTY( EditAnywhere, BlueprintReadWrite )
 	float Speed = 400.f;
 
@@ -52,8 +53,5 @@ private:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 };

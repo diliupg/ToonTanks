@@ -24,6 +24,13 @@ void ATank::SetupPlayerInputComponent( class UInputComponent* PlayerInputCompone
 	PlayerInputComponent->BindAxis( TEXT( "Turn" ), this, &ATank::Turn );
 }
 
+void ATank::BeginPlay( )
+{
+	Super::BeginPlay( );
+
+	PlayerControllerRef = Cast<APlayerController>( GetController( ) );
+}
+
 void ATank::Move( float Value )
 {
 	//UE_LOG( LogTemp, Warning, TEXT( "Value: %f" ), Value );

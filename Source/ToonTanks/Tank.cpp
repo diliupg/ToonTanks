@@ -3,9 +3,11 @@
 
 #include "Tank.h"
 #include "GameFramework/SpringArmComponent.h"
-#include "Camera/CameraComponent.h" 
+#include "Camera/CameraComponent.h"
+#include "Kismet/GameplayStatics.h"
 
-ATank::ATank( )
+ATank::ATank( ) :
+	Speed(200.f )
 {
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>( TEXT( "Spring Arm" ) );
 	SpringArm->SetupAttachment( RootComponent );
@@ -25,7 +27,7 @@ void ATank::Move( float Value )
 	//UE_LOG( LogTemp, Warning, TEXT( "Value: %f" ), Value );
 
 	FVector DeltaLocation = FVector::ZeroVector;
-	DeltaLocation.X = Value;
-	//UE_LOG( LogTemp, Warning, TEXT( "DeltaLocation %f" ), DeltaLocation.X );
+	// x == value * DeltaTime * Speed
+	DeltaLocation.X = Value * Speed * UGameplayStatics::GetWorldDeltaSeconds( this );
 	AddActorLocalOffset( DeltaLocation );
 }

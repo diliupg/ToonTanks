@@ -29,13 +29,4 @@ private:
 	UPROPERTY( VisibleAnywhere, BlueprintReadOnly, Category = Components, Meta = (AllowPrivateAccess = "true") )
 	USceneComponent* ProjectileSpawnPoint;
 
-	UPROPERTY( VisibleAnywhere, BlueprintReadWrite, Category = "Strange Variables", meta = (AllowPrivateAccess = "true") )
-	int32 VisibleAnywhereInt = 24;
-	UPROPERTY( EditAnywhere, BlueprintReadOnly, Category = "Strange Variables", meta = (AllowPrivateAccess = "true") )
-	int32 EditAnywhereInt = 32;
-
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
 };

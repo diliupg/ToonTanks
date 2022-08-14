@@ -5,7 +5,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
 #include "Kismet/GameplayStatics.h"
-#include "DrawDebugHelpers.h"
+//#include "DrawDebugHelpers.h"
 
 ATank::ATank( ) :
 	Speed(200.f ),
@@ -45,7 +45,8 @@ void ATank::Tick( float DeltaTime )
 			FColor::Red,
 			false,
 			-1.f );
-		
+
+		RotateTurret( HitResult.ImpactPoint );
 	}
 }
 

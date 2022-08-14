@@ -6,9 +6,7 @@
 #include "BasePawn.h"
 #include "Tank.generated.h"
 
-/**
- * 
- */
+
 UCLASS()
 class TOONTANKS_API ATank : public ABasePawn
 {

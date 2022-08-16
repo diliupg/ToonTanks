@@ -48,7 +48,7 @@ void AProjectile::OnHit( UPrimitiveComponent* HitComp, AActor* OtherActor, UPrim
 	if ( OtherActor && OtherActor != this && OtherActor != MyOwner )
 	{
 		UGameplayStatics::ApplyDamage( OtherActor, Damage, MyOwnerInstigator, this, DamageTypeClass );
-		Destroy( );
+		Destroy( ); // destroy the projectile on impact
 	}
 }
 

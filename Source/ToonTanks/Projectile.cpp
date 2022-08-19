@@ -70,8 +70,13 @@ void AProjectile::OnHit( UPrimitiveComponent* HitComp, AActor* OtherActor, UPrim
 			UGameplayStatics::PlaySoundAtLocation( this, HitSound, GetActorLocation( ) );
 		}
 		
-		Destroy( ); // destroy the projectile on impact
+		if ( HitCameraShakeClass )
+		{
+			GetWorld( )->GetFirstPlayerController( )->ClientStartCameraShake( HitCameraShakeClass );
+		}
+		
 	}
+	Destroy( ); // destroy the projectile on impact
 	
 }
 

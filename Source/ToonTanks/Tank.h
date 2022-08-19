@@ -25,6 +25,7 @@ public:
 
 	APlayerController* GetTankPlayerController( ) const { return TankPlayerController; }
 
+	bool bAlive;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay( ) override;

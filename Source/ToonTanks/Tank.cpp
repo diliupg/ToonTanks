@@ -9,7 +9,8 @@
 
 ATank::ATank( ) :
 	Speed(200.f ),
-	TurnRate(50.f )
+	TurnRate(50.f ),
+	bAlive(true )
 {
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>( TEXT( "Spring Arm" ) );
 	SpringArm->SetupAttachment( RootComponent );
@@ -57,6 +58,7 @@ void ATank::HandleDestruction( )
 	Super::HandleDestruction( );
 	SetActorHiddenInGame( true );
 	SetActorTickEnabled( false );
+	bAlive = false;
 }
 
 void ATank::BeginPlay( )
